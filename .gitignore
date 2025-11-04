@@ -1,4 +1,12 @@
+# Ignore virtual environments
 venv/
-outputs/
+
+# Ignore caches and temporary files
 __pycache__/
+outputs/
 *.wav
+*.pt
+*.bin
+*.dll
+*.th
+.cache/
