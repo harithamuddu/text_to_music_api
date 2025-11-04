@@ -6,13 +6,13 @@ import soundfile as sf
 import uuid
 import os
 
-# ✅ FastAPI app
+#  FastAPI app
 app = FastAPI(title="🎵 Secure Text-to-Music API")
 
-# ✅ API Key
+#  API Key
 API_KEY = "H015-0802-050-0203H"
 
-# ✅ Load model once
+#  Load model once
 print("🎵 Loading MusicGen model…")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -22,7 +22,7 @@ model = MusicgenForConditionalGeneration.from_pretrained(
 ).to(device)
 
 processor = AutoProcessor.from_pretrained("facebook/musicgen-small")
-print("✅ Model Loaded Successfully!")
+print(" Model Loaded Successfully!")
 
 os.makedirs("outputs", exist_ok=True)
 
@@ -34,11 +34,11 @@ async def generate_music(
     x_api_key: str = Header(None)
 ):
 
-    # ✅ API key check
+    #  API key check
     if x_api_key != API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API Key")
 
-    # ✅ Allow JSON + form
+    #  Allow JSON + form
     if prompt is None:
         try:
             data = await request.json()
